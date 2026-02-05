@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class CalculatorG{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Enter exam score (0-100): ");
+        int s=sc.nextInt();
+        if(s<0||s>100) System.out.println("Error: score must be 0-100!");
+        else{
+            char g; String desc;
+            if(s>=90){g='A';desc="Excellent";}
+            else if(s>=80){g='B';desc="Very Good";}
+            else if(s>=70){g='C';desc="Good";}
+            else if(s>=60){g='D';desc="Satisfactory";}
+            else if(s>=50){g='E';desc="Pass";}
+            else{g='F';desc="Fail";}
+            System.out.println("Score:"+s+" Grade:"+g+" ("+desc+")");
+            System.out.println("Status:"+(s>=50?"PASSED!":"FAILED."));
+        }
+        sc.close();
+    }
+}
