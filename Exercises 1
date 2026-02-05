@@ -1,0 +1,58 @@
+class mobilephone {
+    private String brand;
+    private String model;
+    private double price;
+    private int batterylevel;
+    private boolean isOn;
+    public mobilephone(String b,String m ,double p){ brand= b;model= m;price=p;}
+    public  mobilephone(){
+        brand="UKNOWN";
+        model="UKNOWN";
+        price=0;
+        batterylevel=100;
+        isOn= false;
+    }
+        public String getbrand(){return brand; }
+        public String getmodel (){ return model;}
+        public double getprice(){ return price;}
+        public int getbatterylevel(){ return batterylevel;}
+        public boolean getisOn(){ return isOn;}
+        public void setprice(double p){ this.price=0;}
+        public void setbatterylevel( int bl){ this.batterylevel=100;} 
+        public void turnOn(){
+            if(batterylevel>0) isOn = true;
+            
+        }
+        public void turnOff(){
+            isOn = false;
+        }
+        public void makeCall(String c){ 
+            if(isOn && batterylevel >=5){System.out.println("calling"+ c); batterylevel-=5;}
+            else { System.out.println ("cannot calling");} 
+            
+            
+            
+        }
+        public void chargeBattery( int m){
+            batterylevel+=2*m; if(batterylevel>100) batterylevel =100; System.out.println("battery" + batterylevel+ "%");
+            
+        }
+        public void displayInfo(){
+            System.out.println("brand:"+brand+ "model:"+ model+ "price:"+ price+ "batterylevel:" + batterylevel);
+
+        }
+    public static void main(String[] args){
+        System.out.println("===MOBILE PHONE EXERCISE===");
+        mobilephone mp= new mobilephone ("Samsung","galaxy S24",250000);
+        mp.turnOn();
+        mp.makeCall("Father");
+        mp.makeCall("Mother"); 
+        mp.makeCall("Friend");
+        mp.displayInfo();
+        mp.chargeBattery(10);
+        mp.displayInfo();
+        System.out.println("ln===Exercise complete===");
+            
+        
+    }      
+}
