@@ -1,0 +1,102 @@
+class product{
+    private String pcode;
+    private String name;
+    private String category;
+    private double unitProduct;
+    private int qualityStock;
+    private int reorderLevel;
+public product(){
+    pcode= "";
+    name= "";
+    category="";
+    unitProduct=0;
+    qualityStock=0;
+    reorderLevel=10;
+} 
+public product(String p,String n,String c,double u,int q,int r){
+    this.pcode= p;
+    this.name=n;
+    this.category=c;
+    this.unitProduct=u;
+    this.qualityStock=q;
+    this.reorderLevel=r;
+} 
+public String getPcode(){ return pcode;} 
+public String getName(){ return name;} 
+public String getCategory(){ return category;}
+public double getUnitProduct(){ return unitProduct;}
+public int getQualityStock(){ return qualityStock;}
+public int getReorderLevel(){ return reorderLevel;}
+public void setPcode( String p){ pcode=pcode;}
+public void setName(String n){ name=name;}
+public void setCategory(String c){ category=category;}
+public void setUnitProduct( double u){ if (u>0)  unitProduct=unitProduct; }
+public void setQualityStock( int q){ if(q>=0) qualityStock=qualityStock;}
+public void setReoderLevel(int r){ if( r>0) reorderLevel=reorderLevel;}  
+public void addStock(int quantity){
+            if (quantity > 0) {
+            qualityStock += quantity;
+        }
+    }
+
+    public boolean sellProduct(int quantity) {
+        if (quantity > 0 && quantity <= qualityStock) {
+            qualityStock -= quantity;
+            return true;
+        }
+        return false;
+    }
+
+    public double calculateStockValue() {
+        return unitProduct * qualityStock;
+    }
+
+    public boolean needsReorder() {
+        return qualityStock <= reorderLevel;
+    }
+
+    public void applyDiscount(double percentage) {
+        if (percentage > 0 && percentage <= 100) {
+            unitProduct -= unitProduct * (percentage / 100);
+        }
+    }
+
+    public void displayProductInfo() {
+        System.out.println("Product Code : " + pCode);
+        System.out.println("Product Name : " + pName);
+        System.out.println("Category     : " + category);
+        System.out.println("Unit Price   : " + unitPrice);
+        System.out.println("Stock Qty    : " + quantityInStock);
+        System.out.println("Reorder Lvl  : " + reorderLevel);
+        System.out.println("Stock Value  : " + calculateStockValue());
+        System.out.println("------------------------------");
+    }
+    public static void main(String[] args) {
+        System.out.println("---Product Inventory Exercise ---\n");
+        Product product1 =new Product("PRD001", "Laptop", "Electronics", 1500000, 25);
+
+        Product product2 = new Product("PRD002", "Office Chair", "Furniture", 350000, 8);
+
+        Product product3 = new Product("PRD003", "Notebook", "Stationery", 5000, 100);
+
+    
+        product1.displayProductInfo();
+        product2.displayProductInfo();
+        product3.displayProductInfo
+        product1.sellProduct(20);
+        System.out.println("Product2 needs reorder: " + product2.needsReorder());
+        System.out.println();
+
+        product2.addStock(50);
+
+        product3.applyDiscount(15);
+
+
+         Final Stock Details ===\n");
+        product1.displayProductInfo();
+        product2.displayProductInfo();
+        product3.displayProductInfo();
+
+        System.out.println("---Exercise Complete ---");
+    }
+}
