@@ -1,0 +1,292 @@
+class Vehicle {
+
+    protected String brand;
+
+    protected String model;
+
+    protected int year;
+
+    protected double price;
+
+
+
+    public Vehicle(String brand, String model, int year, double price) {
+
+        this.brand = brand;
+
+        this.model = model;
+
+        this.year = year;
+
+        this.price = price;
+
+    }
+
+
+
+    public void displayInfo() {
+
+        System.out.println(" VEHICLE DETAILS");
+
+        System.out.println("Brand: " + brand);
+
+        System.out.println("Model: " + model);
+
+        System.out.println("Year:" + year);
+
+        System.out.printf("Price:TZS %, .2f%n", price);
+
+    }
+
+
+
+    public void startEngine() {
+
+        System.out.println(brand + " " + model + " engine is  ready to work now");
+
+    }
+
+
+
+    public void stopEngine() {
+
+        System.out.println(brand + " " + model + " The engine is stop now ");
+
+    }
+
+}
+
+
+
+class Car extends Vehicle {
+
+    private int numDoors;
+
+    private String fuelType;
+
+
+
+    public Car(String brand, String model, int year, double price,int numDoors, String fuelType) {
+
+        super(brand, model, year, price);
+
+        this.numDoors = numDoors;
+
+        this.fuelType = fuelType;
+
+    }
+
+
+
+    public void displayInfo() {
+
+        super.displayInfo();
+
+        System.out.println("Doors : " + numDoors);
+
+        System.out.println("Fuel  : " + fuelType);
+
+    }
+
+
+
+    public void honk() {
+
+        System.out.println(brand + " " + model + " Beep Beep!");
+
+    }
+
+
+
+    public void openTrunk() {
+
+        System.out.println("The trunk opened for " + brand + " " + model);
+
+    }
+
+}
+
+
+
+class Motorcycle extends Vehicle {
+
+    private int engineCC;
+
+    private boolean helmetStorage;
+
+
+
+    public Motorcycle(String brand, String model, int year, double price,int engineCC, boolean helmetStorage) {
+
+        super(brand, model, year, price);
+
+        this.engineCC = engineCC;
+
+        this.helmetStorage = helmetStorage;
+
+    }
+
+    public void displayInfo() {
+
+        super.displayInfo();
+
+        System.out.println("Engine Size : " + engineCC + " CC");
+
+        System.out.println("Helmet Box  : " + (helmetStorage ? " is Available" : " is Not Available"));
+
+    }
+
+
+
+    public void wheelie() {
+
+        System.out.println(brand + " " + model + "  A well performs a wheelie!");
+
+    }
+
+
+
+    public void kickStart() {
+
+        System.out.println("Kick starting " + brand + " " + model);
+
+    }
+
+}
+
+
+
+class ElectricCar extends Car {
+
+    private double batteryCapacity;
+
+    private int range;
+
+
+
+    public ElectricCar(String brand, String model, int year, double price,int numDoors, String fuelType,double batteryCapacity, int range) {
+
+        super(brand, model, year, price, numDoors, fuelType);
+
+        this.batteryCapacity = batteryCapacity;
+
+        this.range = range;
+
+    }
+
+
+
+    
+
+    public void startEngine() {
+
+        System.out.println(brand + " " + model + " electric system activated silently");
+
+    }
+
+
+
+    public void charge() {
+
+        System.out.println(" A Charging " + brand + " " + model +  "  Battery: " + batteryCapacity + " kWh");
+
+    }
+
+    public void displayBatteryStatus() {
+
+        System.out.println(" The Battery Capacity is : " + batteryCapacity + " kWh");
+
+        System.out.println(" A Driving Range    : " + range + " km");
+
+    }
+
+}
+
+
+
+public class Inheritance {
+
+    public static void main(String[] args) {
+
+
+
+        System.out.println("   VEHICLE SYSTEM DEMO  \n");
+
+
+
+        Car c = new Car("Toyota", "Corolla", 2023, 45000000, 4, "Petrol");
+
+        Motorcycle bike = new Motorcycle("Honda", "CBR500R", 2022, 15000000, 500, false);
+
+        ElectricCar eCar = new ElectricCar("Tesla", "Model 3", 2024, 85000000,  4, "Electric", 75.0, 450);
+
+
+
+        System.out.println("  CAR TEST ");
+
+        c.displayInfo();
+
+        c.startEngine();
+
+        c.honk();
+
+        c.openTrunk();
+
+        c.stopEngine();
+
+
+
+        System.out.println("\n    MOTORCYCLE TEST   ");
+
+        bike.displayInfo();
+
+        bike.startEngine();
+
+        bike.wheelie();
+
+        bike.kickStart();
+
+        bike.stopEngine();
+
+
+
+        System.out.println("\n    ELECTRIC CAR TEST   ");
+
+        eCar.displayInfo();
+
+        eCar.startEngine();
+
+        eCar.charge();
+
+        eCar.displayBatteryStatus();
+
+        eCar.honk();
+
+        eCar.stopEngine();
+
+
+
+        System.out.println("\n      POLYMORPHISM CHECK     ");
+
+        Vehicle[] vehicles = {c, bike, eCar};
+
+
+
+        for (Vehicle vh : vehicles) {
+
+            vh.displayInfo();
+
+            vh.startEngine();
+
+            System.out.println();
+
+        }
+
+        System.out.println(" END");
+
+    }
+
+}
+
+
+
